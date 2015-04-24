@@ -41,7 +41,7 @@ class CollectorParser extends \Twig_TokenParser
      */
     public function decideBlockEnd(Twig_Token $token)
     {
-        return $token->test('endset');
+        return $token->test('endcollector');
     }
 
     /**
