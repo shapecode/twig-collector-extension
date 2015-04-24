@@ -21,18 +21,19 @@ class CollectorParser extends \Twig_TokenParser
     public function parse(Twig_Token $token)
     {
         $stream = $this->parser->getStream();
-        $names = $this->parser->getExpressionParser()->parseAssignmentExpression();
+        $name = $this->parser->getExpressionParser()->parseAssignmentExpression();
 
-        if (count($names) > 1) {
+        if (count($name) > 1) {
             throw new Twig_Error_Syntax("When using collector, you cannot have a multi-target.", $stream->getCurrent()->getLine(), $stream->getFilename());
         }
 
         $stream->expect(Twig_Token::BLOCK_END_TYPE);
 
-        $values = $this->parser->subparse(array($this, 'decideBlockEnd'), true);
+        $value = $this->parser->subparse(array($this, 'decideBlockEnd'), true);
         $stream->expect(Twig_Token::BLOCK_END_TYPE);
 
-        return new CollectorNode($names[0], $values[0], $token->getLine(), $this->getTag());
+
+        return new CollectorNode($name->getNode(0), $value, $token->getLine(), $this->getTag());
     }
 
     /**
