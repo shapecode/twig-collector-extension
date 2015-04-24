@@ -31,7 +31,6 @@ class CollectorNode extends Twig_Node
 
         $compiler->write("ob_start();\n");
         $compiler->subcompile($this->getNode('values'));
-//        $compiler->subcompile(, false);
         $compiler->raw("\$collector['".$this->getNode('name')->getAttribute('name')."'][] = ('' === \$tmp = ob_get_clean()) ? '' : new Twig_Markup(\$tmp, \$this->env->getCharset())");
         $compiler->raw(";\n");
     }

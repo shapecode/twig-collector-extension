@@ -2,6 +2,7 @@
 
 namespace Shapecode\Twig\Extensions\Extension;
 
+use Shapecode\Twig\Extensions\TokenParser\CollectionParser;
 use Shapecode\Twig\Extensions\TokenParser\CollectorParser;
 
 /**
@@ -18,7 +19,10 @@ class Collector extends \Twig_Extension
      */
     public function getTokenParsers()
     {
-        return array(new CollectorParser());
+        return array(
+            new CollectorParser(),
+            new CollectionParser()
+        );
     }
 
     /**
