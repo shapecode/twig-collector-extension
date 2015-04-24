@@ -1,0 +1,37 @@
+{
+    "name": "shapecode/twig-collector-extension",
+    "description": "",
+    "keywords": [
+        "shapecode",
+        "twig",
+        "extension",
+        "collect",
+        "collector",
+        "capture"
+    ],
+    "type": "lib",
+    "license": "MIT",
+    "homepage": "http://shapecode.de",
+    "support": {
+        "email": "support@nikita-loges.de",
+        "issues": "https://bitbucket.org/shapecode/twig-collector-extension/issues",
+        "source": "https://bitbucket.org/shapecode/twig-collector-extension/downloads",
+        "wiki": "https://bitbucket.org/shapecode/twig-collector-extension/wiki/Home"
+    },
+    "authors": [
+        {
+            "name": "Nikita Loges",
+            "homepage": "http://nikita-loges.de",
+            "email": "develop@nikita-loges.de"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "twig/twig": "~1.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "Shapecode\\Twig\\Extensions\\": "lib/"
+        }
+    }
+}
