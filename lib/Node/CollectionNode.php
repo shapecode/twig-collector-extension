@@ -31,6 +31,18 @@ class CollectionNode extends Twig_Node
     public function compile(Twig_Compiler $compiler)
     {
         $compiler->addDebugInfo($this);
-        $compiler->write("echo implode(' ', \$collector['" . $this->getNode('name')->getAttribute('name') . "']);");
+
+        $compiler->write('$globals = $this->env->getGlobals();');
+        $compiler->raw("\n");
+
+        $compiler->write('if(isset($globals["_collection_' . $this->getNode('name')->getAttribute('name') . '"])) {');
+        $compiler->raw("\n");
+
+        $compiler->write("echo implode(' ', \$globals['_collection_" . $this->getNode('name')->getAttribute('name') . "']);");
+        $compiler->raw("\n");
+
+        $compiler->write('}');
+        $compiler->raw("\n");
+
     }
 }
