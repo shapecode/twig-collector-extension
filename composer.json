@@ -26,8 +26,8 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
-        "twig/twig": "~1.18"
+        "php": ">=5.5.9",
+        "twig/twig": "~1.18|~2.0@dev"
     },
     "autoload": {
         "psr-4": {
@@ -36,7 +36,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.1-dev"
+            "dev-develop": "1.1-dev"
         }
     }
 }
