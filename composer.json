@@ -1,22 +1,23 @@
 {
     "name": "shapecode/twig-collector-extension",
-    "description": "",
+    "description": "Ability to collect html code.",
     "keywords": [
         "shapecode",
         "twig",
         "extension",
         "collect",
         "collector",
-        "capture"
+        "capture",
+        "html"
     ],
     "type": "lib",
     "license": "MIT",
-    "homepage": "http://shapecode.de",
+    "homepage": "https://github.com/shapecode/twig-collector-extension",
     "support": {
         "email": "support@nikita-loges.de",
-        "issues": "https://bitbucket.org/shapecode/twig-collector-extension/issues",
-        "source": "https://bitbucket.org/shapecode/twig-collector-extension/downloads",
-        "wiki": "https://bitbucket.org/shapecode/twig-collector-extension/wiki/Home"
+        "issues": "https://github.com/shapecode/twig-collector-extension/issues",
+        "source": "https://github.com/shapecode/twig-collector-extension/releases",
+        "wiki": "https://github.com/shapecode/twig-collector-extension/wiki"
     },
     "authors": [
         {
@@ -26,12 +27,27 @@
         }
     ],
     "require": {
-        "php": ">=5.4",
-        "twig/twig": "~1.18"
+        "php": ">=5.5.9",
+        "twig/twig": "~1.18|~2.0@dev"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "~2.8|~3.0"
     },
     "autoload": {
         "psr-4": {
-            "Shapecode\\Twig\\Extensions\\": "lib/"
+            "Shapecode\\Twig\\Extensions\\": "src/"
         }
-    }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shapecode\\Twig\\Extensions\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-release/1.0": "1.0-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
