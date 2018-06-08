@@ -3,20 +3,22 @@
 namespace Shapecode\Twig\Extensions\TokenParser;
 
 use Shapecode\Twig\Extensions\Node\CollectionNode;
+use Twig\Error\SyntaxError;
+use Twig\Token;
+use Twig\TokenParser\AbstractTokenParser;
 use Twig_Token;
-use Twig_Error_Syntax;
 
 /**
  * Class CollectorParser
+ *
  * @package Shapecode\Twig\Extensions\TokenParser
- * @author Nikita Loges
- * @date 24.04.2015
+ * @author  Nikita Loges
  */
-class CollectionParser extends \Twig_TokenParser
+class CollectionParser extends AbstractTokenParser
 {
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function parse(Twig_Token $token)
     {
@@ -24,17 +26,16 @@ class CollectionParser extends \Twig_TokenParser
         $name = $this->parser->getExpressionParser()->parseAssignmentExpression();
 
         if (count($name) > 1) {
-            throw new Twig_Error_Syntax("When using collection, you cannot have a multi-target.", $stream->getCurrent()->getLine(), $stream->getFilename());
+            throw new SyntaxError("When using collection, you cannot have a multi-target.", $stream->getCurrent()->getLine(), $stream->getFilename());
         }
 
-        $stream->expect(Twig_Token::BLOCK_END_TYPE);
-
+        $stream->expect(Token::BLOCK_END_TYPE);
 
         return new CollectionNode($name->getNode(0), $token->getLine(), $this->getTag());
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getTag()
     {

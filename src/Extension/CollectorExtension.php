@@ -4,32 +4,25 @@ namespace Shapecode\Twig\Extensions\Extension;
 
 use Shapecode\Twig\Extensions\TokenParser\CollectionParser;
 use Shapecode\Twig\Extensions\TokenParser\CollectorParser;
+use Twig\Extension\AbstractExtension;
 
 /**
- * Class Collector
+ * Class CollectorExtension
+ *
  * @package Shapecode\Twig\Extensions\Extension
- * @author Nikita Loges
- * @date 24.04.2015
+ * @author  Nikita Loges
  */
-class Collector extends \Twig_Extension
+class CollectorExtension extends AbstractExtension
 {
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function getTokenParsers()
     {
-        return array(
+        return [
             new CollectorParser(),
             new CollectionParser()
-        );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return 'collector';
+        ];
     }
 }

@@ -2,47 +2,36 @@
 
 namespace Shapecode\Twig\Extensions\Node;
 
-use Twig_Node;
+use Twig\Node\Node;
 use Twig_Compiler;
 
 /**
  * Class CollectionNode
+ *
  * @package Shapecode\Twig\Extensions\Node
- * @author Nikita Loges
- * @company tenolo GbR
- * @date 24.04.2015
+ * @author  Nikita Loges
  */
-class CollectionNode extends Twig_Node
+class CollectionNode extends Node
 {
 
     /**
      * @param array $name
      * @param array $line
-     * @param null $tag
+     * @param null  $tag
      */
     public function __construct($name, $line, $tag = null)
     {
-        parent::__construct(array('name' => $name), array(), $line, $tag);
+        parent::__construct(['name' => $name], [], $line, $tag);
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritdoc
      */
     public function compile(Twig_Compiler $compiler)
     {
         $compiler->addDebugInfo($this);
 
-        $compiler->write('$globals = $this->env->getGlobals();');
+        $compiler->write("echo \Shapecode\Twig\Extensions\Collector\Collector::getInstance()->get('" . $this->getNode('name')->getAttribute('name') . "');");
         $compiler->raw("\n");
-
-        $compiler->write('if(isset($globals["_collection_' . $this->getNode('name')->getAttribute('name') . '"])) {');
-        $compiler->raw("\n");
-
-        $compiler->write("echo implode(' ', \$globals['_collection_" . $this->getNode('name')->getAttribute('name') . "']);");
-        $compiler->raw("\n");
-
-        $compiler->write('}');
-        $compiler->raw("\n");
-
     }
 }
