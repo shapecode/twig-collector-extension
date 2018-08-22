@@ -29,11 +29,11 @@ class Collector
      */
     public function getInstance()
     {
-        if (static::$instance === null) {
-            static::$instance = new static();
+        if (self::$instance === null) {
+            self::$instance = new Collector();
         }
 
-        return static::$instance;
+        return self::$instance;
     }
 
     /**
